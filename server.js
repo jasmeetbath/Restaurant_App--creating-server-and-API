@@ -9,10 +9,8 @@ app.get("/", function(req, res) {
   res.send("Hello World");
 });
 
-// parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
 
-// parse application/json
 app.use(bodyParser.json());
 
 app.use(function(req, res) {
