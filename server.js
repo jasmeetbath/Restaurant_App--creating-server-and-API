@@ -4,7 +4,6 @@ var path = require("path");
 
 var app = express();
 
-//it will select the port by itself or default to 8080
 var PORT = process.env.PORT || 8080;
 
 app.get("/", function(req, res) {
@@ -15,8 +14,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(bodyParser.json());
 
-app.use(function(req, res) {
-  res.setHeader("Content-Type", "text/plain");
+//middleware to massage the content
+app.use(function(req, res, next) {
   res.write("you posted:\n");
   res.end(JSON.stringify(req.body, null, 2));
 });
